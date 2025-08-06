@@ -1,7 +1,4 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-// import { useTheme } from '../contexts/ThemeContext';
-import lightLogo from 'lightModeLogo.png';
-import darkLogo from 'darkModeLogo.png';
 
 type Theme = 'light' | 'dark';
 
