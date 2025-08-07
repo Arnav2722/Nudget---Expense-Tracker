@@ -33,7 +33,8 @@ const Sidebar: React.FC = () => {
             src="lightModeLogo.png"
             alt="Wallet Icon"
             className="h-8 w-8"
-          />          <div>
+          />         
+          <div>
             <h1 className="text-xl font-bold text-gray-900 dark:text-white">
               Nudget
             </h1>

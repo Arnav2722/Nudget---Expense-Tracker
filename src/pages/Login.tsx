@@ -3,7 +3,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
 import { motion } from 'framer-motion';
-import { Eye, EyeOff, Wallet, Moon, Sun } from 'lucide-react';
+import { Eye, EyeOff, Moon, Sun } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const Login: React.FC = () => {
@@ -27,7 +27,7 @@ const Login: React.FC = () => {
       if (error) {
         toast.error(error.message);
       } else {
-        toast.success('Welcome back!');
+        toast.success('Welcome back User ');
       }
     } catch (error) {
       toast.error('An unexpected error occurred');
@@ -57,11 +57,15 @@ const Login: React.FC = () => {
       >
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
-            <Wallet className="h-12 w-12 text-primary-600" />
+            <img
+            src="lightModeLogo.png"
+            alt="Wallet Icon"
+            className="h-24 w-24"
+          />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Welcome Back</h1>
           <p className="text-gray-600 dark:text-gray-400 mt-2">
-            Sign in to your ExpenseTracker Pro account
+            Sign in to your Nudget account
           </p>
         </div>
 

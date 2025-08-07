@@ -79,7 +79,11 @@ const Register: React.FC = () => {
       >
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
-            <Wallet className="h-12 w-12 text-primary-600" />
+            <img
+            src="lightModeLogo.png"
+            alt="Wallet Icon"
+            className="h-24 w-24"
+          />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Create Account</h1>
           <p className="text-gray-600 dark:text-gray-400 mt-2">
