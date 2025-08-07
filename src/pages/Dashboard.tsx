@@ -593,7 +593,7 @@ const Dashboard: React.FC = () => {
               <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Balance</p>
               {/* <-- CORRECTED: Use template literal for class string */}
               <p className={`text-2xl font-bold ${stats.balance >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                ${stats.balance.toLocaleString()}
+                ₹{stats.balance.toLocaleString()}
               </p>
             </div>
             <Wallet className="h-12 w-12 text-primary-600" />
@@ -610,7 +610,7 @@ const Dashboard: React.FC = () => {
             <div>
               <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Monthly Income</p>
               <p className="text-2xl font-bold text-green-600">
-                ${stats.totalIncome.toLocaleString()}
+                ₹{stats.totalIncome.toLocaleString()}
               </p>
             </div>
             <TrendingUp className="h-12 w-12 text-green-600" />
@@ -627,7 +627,7 @@ const Dashboard: React.FC = () => {
             <div>
               <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Monthly Expenses</p>
               <p className="text-2xl font-bold text-red-600">
-                ${stats.totalExpenses.toLocaleString()}
+                ₹{stats.totalExpenses.toLocaleString()}
               </p>
             </div>
             <TrendingDown className="h-12 w-12 text-red-600" />
@@ -800,7 +800,7 @@ const Dashboard: React.FC = () => {
                 </div>
                 {/* <-- CORRECTED: Use template literal for class string */}
                 <p className={`font-semibold ${transaction.type === 'income' ? 'text-green-600' : 'text-red-600'}`}>
-                  {transaction.type === 'income' ? '+' : '-'}${transaction.amount.toLocaleString()}
+                  {transaction.type === 'income' ? '+' : '-'}₹{transaction.amount.toLocaleString()}
                 </p>
               </div>
             ))}
