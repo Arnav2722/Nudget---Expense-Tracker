@@ -30,7 +30,7 @@ const Sidebar: React.FC = () => {
       <div className="p-6">
         <div className="flex items-center space-x-3">
           <img
-            src="logo.png"
+            src="lightModeLogo.png"
             alt="Wallet Icon"
             className="h-8 w-8"
           />          <div>
