@@ -163,27 +163,28 @@ const Transactions: React.FC = () => {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
           Transactions
         </h1>
-        <div className="flex space-x-3">
+        <div className="flex space-x-2 sm:space-x-3">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={exportTransactions}
-            className="flex items-center space-x-2 bg-secondary-600 hover:bg-secondary-700 text-white px-4 py-2 rounded-lg transition-colors"
+            className="flex items-center space-x-1 sm:space-x-2 bg-secondary-600 hover:bg-secondary-700 text-white px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm sm:text-base"
           >
             <Download size={16} />
-            <span>Export</span>
+            <span className="hidden sm:inline">Export</span>
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate('/add-transaction')}
-            className="flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg transition-colors"
+            className="flex items-center space-x-1 sm:space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm sm:text-base"
           >
             <Plus size={16} />
-            <span>Add Transaction</span>
+            <span className="hidden sm:inline">Add Transaction</span>
+            <span className="sm:hidden">Add</span>
           </motion.button>
         </div>
       </div>
@@ -192,9 +193,9 @@ const Transactions: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6"
+        className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6"
       >
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Search */}
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
@@ -247,26 +248,26 @@ const Transactions: React.FC = () => {
       >
         {currentTransactions.length > 0 ? (
           <>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto -mx-4 sm:mx-0">
               <table className="w-full">
                 <thead className="bg-gray-50 dark:bg-gray-700">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Date
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Description
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider hidden sm:table-cell">
                       Category
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Amount       
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider hidden lg:table-cell">
                       Payment
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                    <th className="px-3 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       Actions
                     </th>
                   </tr>
@@ -279,39 +280,43 @@ const Transactions: React.FC = () => {
                       animate={{ opacity: 1 }}
                       className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                     >
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                        {format(new Date(transaction.date), 'MMM dd, yyyy')}
+                      <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900 dark:text-white">
+                        <div className="sm:hidden">{format(new Date(transaction.date), 'MMM dd')}</div>
+                        <div className="hidden sm:block">{format(new Date(transaction.date), 'MMM dd, yyyy')}</div>
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-900 dark:text-white">
+                      <td className="px-3 sm:px-6 py-4 text-xs sm:text-sm text-gray-900 dark:text-white">
                         <div className="flex items-center">
                           <div 
-                            className="w-3 h-3 rounded-full mr-3"
+                            className="w-2 h-2 sm:w-3 sm:h-3 rounded-full mr-2 sm:mr-3 flex-shrink-0"
                             style={{ backgroundColor: transaction.categories?.color || '#6b7280' }}
                           ></div>
-                          {transaction.description}
+                          <span className="truncate">{transaction.description}</span>
+                        </div>
+                        <div className="sm:hidden text-xs text-gray-500 dark:text-gray-400 mt-1">
+                          {transaction.categories?.name || 'N/A'}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
+                      <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900 dark:text-white hidden sm:table-cell">
                         {transaction.categories?.name || 'N/A'}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                      <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm font-medium">
                         <span className={transaction.type === 'income' ? 'text-green-600' : 'text-red-600'}>
                           {transaction.type === 'income' ? '+' : '-'}₹{transaction.amount.toLocaleString()}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white capitalize">
+                      <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm text-gray-900 dark:text-white capitalize hidden lg:table-cell">
                         {transaction.payment_method.replace('_', ' ')}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                        <div className="flex space-x-2">
+                      <td className="px-3 sm:px-6 py-4 whitespace-nowrap text-xs sm:text-sm font-medium">
+                        <div className="flex space-x-1 sm:space-x-2">
                           <button className="text-primary-600 hover:text-primary-900 dark:hover:text-primary-400">
-                            <Edit size={16} />
+                            <Edit size={14} className="sm:w-4 sm:h-4" />
                           </button>
                           <button 
                             onClick={() => deleteTransaction(transaction.id)}
                             className="text-red-600 hover:text-red-900 dark:hover:text-red-400"
                           >
-                            <Trash2 size={16} />
+                            <Trash2 size={14} className="sm:w-4 sm:h-4" />
                           </button>
                         </div>
                       </td>
@@ -323,8 +328,8 @@ const Transactions: React.FC = () => {
 
             {/* Pagination */}
             {totalPages > 1 && (
-              <div className="bg-gray-50 dark:bg-gray-700 px-6 py-3 flex items-center justify-between">
-                <div className="text-sm text-gray-700 dark:text-gray-300">
+              <div className="bg-gray-50 dark:bg-gray-700 px-4 sm:px-6 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <div className="text-xs sm:text-sm text-gray-700 dark:text-gray-300">
                   Showing {startIndex + 1} to {Math.min(endIndex, filteredTransactions.length)} of {filteredTransactions.length} results
                 </div>
                 <div className="flex space-x-2">
@@ -335,7 +340,7 @@ const Transactions: React.FC = () => {
                   >
                     <ChevronLeft size={16} />
                   </button>
-                  <span className="px-4 py-2 text-sm text-gray-700 dark:text-gray-300">
+                  <span className="px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-700 dark:text-gray-300">
                     Page {currentPage} of {totalPages}
                   </span>
                   <button

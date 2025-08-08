@@ -581,12 +581,12 @@ const Dashboard: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6"
+          className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6"
         >
           <div className="flex items-center justify-between">
             <div>
@@ -596,7 +596,7 @@ const Dashboard: React.FC = () => {
                 ₹{stats.balance.toLocaleString()}
               </p>
             </div>
-            <Wallet className="h-12 w-12 text-primary-600" />
+            <Wallet className="h-8 w-8 sm:h-12 sm:w-12 text-primary-600" />
           </div>
         </motion.div>
 
@@ -604,7 +604,7 @@ const Dashboard: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6"
+          className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6"
         >
           <div className="flex items-center justify-between">
             <div>
@@ -613,7 +613,7 @@ const Dashboard: React.FC = () => {
                 ₹{stats.totalIncome.toLocaleString()}
               </p>
             </div>
-            <TrendingUp className="h-12 w-12 text-green-600" />
+            <TrendingUp className="h-8 w-8 sm:h-12 sm:w-12 text-green-600" />
           </div>
         </motion.div>
 
@@ -621,7 +621,7 @@ const Dashboard: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6"
+          className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6"
         >
           <div className="flex items-center justify-between">
             <div>
@@ -630,7 +630,7 @@ const Dashboard: React.FC = () => {
                 ₹{stats.totalExpenses.toLocaleString()}
               </p>
             </div>
-            <TrendingDown className="h-12 w-12 text-red-600" />
+            <TrendingDown className="h-8 w-8 sm:h-12 sm:w-12 text-red-600" />
           </div>
         </motion.div>
 
@@ -638,7 +638,7 @@ const Dashboard: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6"
+          className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6"
         >
           <div className="flex items-center justify-between">
             <div>
@@ -654,27 +654,27 @@ const Dashboard: React.FC = () => {
                 ></div>
               </div>
             </div>
-            <Target className="h-12 w-12 text-orange-600" />
+            <Target className="h-8 w-8 sm:h-12 sm:w-12 text-orange-600" />
           </div>
         </motion.div>
       </div>
 
       {/* Charts Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {/* Income vs Expenses Chart */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6"
+          className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6"
         >
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
               Income vs Expenses (Last 7 Days)
             </h3>
             <BarChart3 className="h-5 w-5 text-gray-400" />
           </div>
-          <ResponsiveContainer width="100%" height={300}>
+          <ResponsiveContainer width="100%" height={250}>
             <LineChart data={chartData}>
               <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
               <XAxis dataKey="date" className="text-sm" />
@@ -710,16 +710,16 @@ const Dashboard: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6"
+          className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6"
         >
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
               Expenses by Category
             </h3>
             <PieChart className="h-5 w-5 text-gray-400" />
           </div>
           {categoryData.length > 0 ? (
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={250}>
               <RechartsPieChart>
                 <Pie
                   data={categoryData}
@@ -758,48 +758,50 @@ const Dashboard: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.7 }}
-        className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6"
+        className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6"
       >
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
             Recent Transactions
           </h3>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate('/add-transaction')}
-            className="flex items-center space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg transition-colors"
+            className="flex items-center space-x-1 sm:space-x-2 bg-primary-600 hover:bg-primary-700 text-white px-3 sm:px-4 py-2 rounded-lg transition-colors text-sm sm:text-base"
           >
             <Plus size={16} />
-            <span>Add Transaction</span>
+            <span className="hidden sm:inline">Add Transaction</span>
+            <span className="sm:hidden">Add</span>
           </motion.button>
         </div>
         
         {recentTransactions.length > 0 ? (
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {recentTransactions.map((transaction) => (
               <div
                 key={transaction.id}
-                className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-lg"
+                className="flex items-center justify-between p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg"
               >
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
                   <div 
-                    className="w-10 h-10 rounded-full flex items-center justify-center"
+                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center flex-shrink-0"
                     style={{ backgroundColor: transaction.category?.color || '#6b7280' }}
                   >
-                    <Calendar size={16} className="text-white" />
+                    <Calendar size={14} className="text-white sm:w-4 sm:h-4" />
                   </div>
-                  <div>
-                    <p className="font-medium text-gray-900 dark:text-white">
+                  <div className="min-w-0 flex-1">
+                    <p className="font-medium text-gray-900 dark:text-white text-sm sm:text-base truncate">
                       {transaction.description}
                     </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
-                      {transaction.category?.name} • {format(new Date(transaction.date), 'MMM dd, yyyy')}
+                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 truncate">
+                      <span className="hidden sm:inline">{transaction.category?.name} • </span>
+                      {format(new Date(transaction.date), 'MMM dd')}
                     </p>
                   </div>
                 </div>
                 {/* <-- CORRECTED: Use template literal for class string */}
-                <p className={`font-semibold ${transaction.type === 'income' ? 'text-green-600' : 'text-red-600'}`}>
+                <p className={`font-semibold text-sm sm:text-base flex-shrink-0 ${transaction.type === 'income' ? 'text-green-600' : 'text-red-600'}`}>
                   {transaction.type === 'income' ? '+' : '-'}₹{transaction.amount.toLocaleString()}
                 </p>
               </div>

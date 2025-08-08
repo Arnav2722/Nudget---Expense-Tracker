@@ -103,30 +103,30 @@ const AddTransaction: React.FC = () => {
   const filteredCategories = categories.filter(cat => cat.type === selectedType);
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-2xl mx-auto px-4 sm:px-0">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8"
+        className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6 lg:p-8"
       >
-        <div className="flex items-center mb-8">
-          <Plus className="h-8 w-8 text-primary-600 mr-3" />
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+        <div className="flex items-center mb-6 sm:mb-8">
+          <Plus className="h-6 w-6 sm:h-8 sm:w-8 text-primary-600 mr-3" />
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
             Add Transaction
           </h1>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
           {/* Transaction Type Toggle */}
           <div>
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
               Transaction Type
             </label>
-            <div className="flex bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
+            <div className="grid grid-cols-2 bg-gray-100 dark:bg-gray-700 rounded-lg p-1">
               <button
                 type="button"
                 onClick={() => setSelectedType('expense')}
-                className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+                className={`py-2 px-4 rounded-md text-sm font-medium transition-colors ${
                   selectedType === 'expense'
                     ? 'bg-red-600 text-white'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
@@ -137,7 +137,7 @@ const AddTransaction: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setSelectedType('income')}
-                className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-colors ${
+                className={`py-2 px-4 rounded-md text-sm font-medium transition-colors ${
                   selectedType === 'income'
                     ? 'bg-green-600 text-white'
                     : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
@@ -266,7 +266,7 @@ const AddTransaction: React.FC = () => {
             whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={loading}
-            className="w-full bg-primary-600 hover:bg-primary-700 text-white py-3 px-4 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-primary-600 hover:bg-primary-700 text-white py-3 px-4 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
           >
             {loading ? 'Adding Transaction...' : 'Add Transaction'}
           </motion.button>

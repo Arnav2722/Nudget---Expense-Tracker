@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { X } from 'lucide-react';
 import {
   LayoutDashboard,
   PlusCircle,
@@ -24,9 +25,39 @@ const navigation = [
   { name: 'Settings', href: '/settings', icon: Settings },
 ];
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   return (
-    <div className="w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col">
+    <>
+      {/* Mobile overlay */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          onClick={onClose}
+        />
+      )}
+      
+      {/* Sidebar */}
+      <div className={`
+        fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-800 
+        border-r border-gray-200 dark:border-gray-700 flex flex-col
+        transform transition-transform duration-300 ease-in-out lg:transform-none
+        ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+      `}>
+        {/* Mobile close button */}
+        <div className="lg:hidden flex justify-end p-4">
+          <button
+            onClick={onClose}
+            className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700"
+          >
+            <X size={20} />
+          </button>
+        </div>
+        
       <div className="p-6">
         <div className="flex items-center space-x-3">
           <img
@@ -42,12 +73,13 @@ const Sidebar: React.FC = () => {
         </div>
       </div>
       
-      <nav className="flex-1 px-4 pb-6">
+        <nav className="flex-1 px-4 pb-6">
         <ul className="space-y-2">
           {navigation.map((item) => (
             <li key={item.name}>
               <NavLink
                 to={item.href}
+                onClick={() => onClose()}
                 className={({ isActive }) =>
                   `flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
                     isActive
@@ -75,7 +107,8 @@ const Sidebar: React.FC = () => {
           ))}
         </ul>
       </nav>
-    </div>
+      </div>
+    </>
   );
 };
 

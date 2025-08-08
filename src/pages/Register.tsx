@@ -59,7 +59,7 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4 sm:p-6">
       <div className="absolute top-4 right-4">
         <motion.button
           whileHover={{ scale: 1.05 }}
@@ -75,19 +75,19 @@ const Register: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-md w-full bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8"
+        className="max-w-md w-full bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 sm:p-8"
       >
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
             <Wallet className="h-12 w-12 text-primary-600" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Create Account</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Create Account</h1>
+          <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-2">
             Join ExpenseTracker Pro and take control of your finances
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           <div>
             <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Full Name
@@ -166,13 +166,13 @@ const Register: React.FC = () => {
             whileTap={{ scale: 0.98 }}
             type="submit"
             disabled={loading}
-            className="w-full bg-primary-600 hover:bg-primary-700 text-white py-3 px-4 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-primary-600 hover:bg-primary-700 text-white py-3 px-4 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
           >
             {loading ? 'Creating Account...' : 'Create Account'}
           </motion.button>
         </form>
 
-        <p className="text-center text-gray-600 dark:text-gray-400 mt-6">
+        <p className="text-center text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-6">
           Already have an account?{' '}
           <Link to="/login" className="text-primary-600 hover:text-primary-700 font-medium">
             Sign in
